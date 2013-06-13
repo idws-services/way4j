@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/ApplicationConfig"
+	xmlns:tns="http://www.example.org/ApplicationConfig"
+	elementFormDefault="qualified">
+
+	<element name="properties" id="properties">
+		<complexType>
+			<choice maxOccurs="unbounded">
+				<element maxOccurs="unbounded" name="property">
+					<complexType>
+						<attribute name="name" use="required" />
+						<attribute name="value" use="required" />
+					</complexType>
+				</element>
+			</choice>
+		</complexType>
+	</element>
+
+	<element name="applicationConfig">
+		<complexType>
+			<choice maxOccurs="unbounded">
+				<element name="packageLocations" maxOccurs="1">
+					<complexType>
+						<choice maxOccurs="unbounded">
+							<element name="service" minOccurs="1">
+								<complexType>
+									<attribute name="src" use="required" />
+								</complexType>
+							</element>
+							<element name="dao" minOccurs="1">
+								<complexType>
+									<attribute name="src" use="required" />
+								</complexType>
+							</element>
+							<element name="controller" minOccurs="1">
+								<complexType>
+									<attribute name="src" use="required" />
+								</complexType>
+							</element>
+							<element name="model" minOccurs="1">
+								<complexType>
+									<attribute name="src" use="required" />
+								</complexType>
+							</element>
+						</choice>
+					</complexType>
+				</element>
+				<element name="genericServicesConfig" maxOccurs="1">
+					<complexType>
+						<choice maxOccurs="unbounded">
+							<element name="shedulerService" maxOccurs="1" minOccurs="0">
+								<complexType>
+									<choice maxOccurs="unbounded">
+										<element ref="tns:properties" maxOccurs="unbounded"
+											minOccurs="0" />
+									</choice>
+									<attribute name="implementationClass" use="optional"/>
+								</complexType>
+							</element>
+							<element name="daoService" maxOccurs="1" minOccurs="1">
+								<complexType>
+									<choice maxOccurs="unbounded">
+										<element name="dataSource">
+											<complexType>
+												<attribute name="url" use="required" />
+												<attribute name="user" use="required" />
+												<attribute name="password" use="required" />
+												<attribute name="sgbd" use="required">
+													<simpleType>
+														<restriction base="string">
+															<enumeration value="postgresql" />
+															<enumeration value="oracle" />
+															<enumeration value="sqlServer" />
+															<enumeration value="mysql" />
+														</restriction>
+													</simpleType>
+												</attribute>
+											</complexType>
+										</element>
+									</choice>
+									<attribute name="implementationClass" use="optional"/>
+								</complexType>
+							</element>
+						</choice>
+					</complexType>
+				</element>
+			</choice>
+		</complexType>
+	</element>
+</schema>
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applicationConfig xmlns="http://www.example.org/ApplicationConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			 xsi:schemaLocation="http://www.example.org/ApplicationConfig ../com/way4j/ApplicationConfig.xsd ">
+			
+			<packageLocations>
+				<dao src="applicationTest.dao"/>
+				<controller src="applicationTest.controller"/>
+				<model src="applicationTest.model"/>
+				<service src="applicationTest.service"/>			
+			</packageLocations>
+			
+			<genericServicesConfig>
+				
+				<shedulerService>
+					<properties>
+						<property name="" value=""/>
+					</properties>
+				</shedulerService>
+				
+				<daoService>
+					<dataSource user="" url="" password="" sgbd="postgresql"/>	
+				</daoService>
+				
+			</genericServicesConfig>
+			
+			
+			
+			
+</applicationConfig>
