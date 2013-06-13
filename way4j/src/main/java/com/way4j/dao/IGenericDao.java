@@ -1,25 +1,16 @@
 package com.way4j.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
-import com.way4j.dao.transaction.ITransactionManager;
-
-public interface IGenericDao<K extends Serializable, T> {
-	
-	T get(K key);
-	T get(IFilterCriteria criteria);
-	
-	List<T> list(IFilterCriteria criteria);
-	
-	void update(T obj);
-	void update(T obj, IFilterCriteria criteria);
+public interface IGenericDao<T> {
 	
 	void insert(T obj);
+	void insert(List<T> obj);
 	
-	void delete(K key);
-	void delete(IFilterCriteria criteria);
+	List<T> list(String filter);
+	T get(String filter);
 	
-	ITransactionManager getTransactionManager();
+	void delete(String filter);
+	void update(T obj, String filter);
 	
 }
